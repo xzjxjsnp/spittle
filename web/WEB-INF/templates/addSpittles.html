@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Spittles</title>
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/css/style.css}" />
+</head>
+<body>
+<div id="content">
+    <div class="spittleForm">
+        <h1>Spit it out...</h1>
+        <form th:action="@{/addSpittle}" method="POST" name="spittle">
+            <textarea id="message" name="message" cols="80" rows="5"></textarea><br/>
+            latitude: <input type="text" name="latitude" />
+            longitude:<input type="text" name="longitude" /><br/>
+            <input type="submit" value="Add" />
+        </form>
+
+        <a th:href="@{/}">Index</a>
+    </div>
+</div>
+</body>
+</html>

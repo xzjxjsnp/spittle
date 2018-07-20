@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spittle">
+    <select id="findLeast10spittle" parameterType="int" resultType="spittrtest.model.Spittle">
+        SELECT * FROM user_xzj_spittle WHERE id &lt;= (select max(id) AS maxid from user_xzj_spittle) order by id desc limit #{count}
+    </select>
+
+    <select id="splitSpittle" parameterType="int" resultType="spittrtest.model.Spittle">
+        SELECT * FROM user_xzj_spittle WHERE id &lt;= (select max(id) AS maxid from user_xzj_spittle) order by id desc limit #{count}
+    </select>
+
+    <select id="findOneSpittle" parameterType="int" resultType="spittrtest.model.Spittle">
+        SELECT * FROM user_xzj_spittle WHERE id = #{id}
+    </select>
+
+    <insert id="insertSpittle" parameterType="spittrtest.model.Spittle">
+        insert into user_xzj_spittle(message, time, latitude, longitude) value (#{message}, #{time, jdbcType=TIMESTAMP}, #{latitude}, #{longitude});
+    </insert>
+
+    <insert id="insertSpitter" parameterType="spittrtest.model.Spitter">
+        insert into user_xzj_spitter(lastname, firstname, username, password) value (#{lastname}, #{firstname}, #{username}, #{password});
+    </insert>
+
+    <select id="findSpitterByUsername" parameterType="String" resultType="spittrtest.model.Spitter">
+        SELECT * FROM user_xzj_spitter WHERE username = #{username}
+    </select>
+</mapper>
